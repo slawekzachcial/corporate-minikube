@@ -86,9 +86,10 @@ proxy. The list includes all services addresses assigned by Minikube.
 
 The things to note in `minikube start` command are:
 * `sudo -E` starts Minikube as root (required) and ensures that it can connect
-  to the Internet to download its components. **IMPORTANT** - your Docker
-  installation must be also configured to allow pulling images through [HTTP
-  proxy](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
+  to the Internet to download its components - `-E` allows to leverage values of
+  environment variables from your current shell (`http_proxy`, `https_proxy`,
+  `no_proxy`). **IMPORTANT** - your Docker installation must be also configured
+  to allow pulling images through [HTTP proxy](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
 * `--vm-driver=none --apiserver-ips=127.0.0.1 --apiserver-name=localhost` tells
   Minikube to use Docker engine you have running on your Linux VM rather than a
   hypervisor
@@ -98,3 +99,6 @@ The things to note in `minikube start` command are:
 * `--logtostderr -v 0` are useful debug options that helped me to figure out why
   my Minikube was not starting initially and what I should put in `no_proxy` to
   make it work.
+
+The remaining commands are straight from [Minikube
+Quickstart](https://kubernetes.io/docs/setup/minikube/#quickstart).
